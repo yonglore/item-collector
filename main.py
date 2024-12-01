@@ -5,8 +5,8 @@ from PyQt6.QtWidgets import QApplication, QWidget, QMainWindow
 
 from styles import alt_class, dead_inside_class, old_money_class, viperr_class, y2k_class
 from item import item_class_alt, item_class_di, item_class_om, item_class_viperr, item_class_y2k
-from favourites import fav_item, item_class_fav_alt
-import models
+from favourites import (fav_item, item_class_fav_alt, item_class_fav_di, item_class_fav_om, item_class_fav_viperr,
+                        item_class_fav_y2k, fav_outfit)
 
 
 class IntroWindow(QWidget):
@@ -22,6 +22,12 @@ class IntroWindow(QWidget):
 
         self.fav_item_btn.clicked.connect(self.fav_item_show)
         self.fav_item_btn.clicked.connect(self.fav_item_show)
+        self.fav_outfit_btn.clicked.connect(self.fav_outfit_show)
+
+    def fav_outfit_show(self):
+        self.parent().fav_outfit.show()
+        self.parent().change_size(853, 813)
+        self.hide()
 
     def fav_item_show(self):
         self.parent().fav_item.show()
@@ -31,31 +37,31 @@ class IntroWindow(QWidget):
     def apply_func(self):
         if self.combobox.currentText() == 'Alt':
             self.parent().alt.show()
-            self.parent().change_size(784, 813)
+            self.parent().change_size(892, 813)
             self.hide()
             self.style_category = 0
 
         if self.combobox.currentText() == 'Dead inside':
             self.parent().dead_inside.show()
-            self.parent().change_size(784, 813)
+            self.parent().change_size(892, 813)
             self.hide()
             self.style_category = 1
 
         if self.combobox.currentText() == 'Old money':
             self.parent().old_money.show()
-            self.parent().change_size(784, 813)
+            self.parent().change_size(892, 813)
             self.hide()
             self.style_category = 2
 
         if self.combobox.currentText() == 'Viperr':
             self.parent().viperr.show()
-            self.parent().change_size(784, 813)
+            self.parent().change_size(892, 813)
             self.hide()
             self.style_category = 3
 
         if self.combobox.currentText() == 'Y2k':
             self.parent().y2k.show()
-            self.parent().change_size(784, 813)
+            self.parent().change_size(892, 813)
             self.hide()
             self.style_category = 4
 
@@ -105,8 +111,23 @@ class MainWindow(QMainWindow):
         self.fav_item = fav_item.FavouriteItem(self)
         self.fav_item.hide()
 
-        self.item_fav_alt  = item_class_fav_alt.FavAlt(self)
+        self.item_fav_alt = item_class_fav_alt.FavAlt(self)
         self.item_fav_alt.hide()
+
+        self.item_fav_di = item_class_fav_di.FavDI(self)
+        self.item_fav_di.hide()
+
+        self.item_fav_om = item_class_fav_om.FavOM(self)
+        self.item_fav_om.hide()
+
+        self.item_fav_viperr = item_class_fav_viperr.FavViperr(self)
+        self.item_fav_viperr.hide()
+
+        self.item_fav_y2k = item_class_fav_y2k.FavY2k(self)
+        self.item_fav_y2k.hide()
+
+        self.fav_outfit = fav_outfit.FavouriteOutfit(self)
+        self.fav_outfit.hide()
 
     def change_size(self, w, h):
         self.setGeometry(100, 0, w, h)

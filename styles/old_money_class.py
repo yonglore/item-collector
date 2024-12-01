@@ -45,6 +45,18 @@ class OldMoney(QWidget):
         self.bot.setIcon(QIcon('pictures/old_money/bot/red classic trouses.png'))
         self.shoes.setIcon(QIcon('pictures/old_money/shoes/adidas campus.png'))
 
+        self.top_next.setIcon(QIcon('styles/right arrow.png'))
+        self.watch_next.setIcon(QIcon('styles/right arrow.png'))
+        self.bag_next.setIcon(QIcon('styles/right arrow.png'))
+        self.bot_next.setIcon(QIcon('styles/right arrow.png'))
+        self.shoes_next.setIcon(QIcon('styles/right arrow.png'))
+
+        self.top_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.watch_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.bag_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.bot_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.shoes_prev.setIcon(QIcon('styles/left arrow.png'))
+
         self.top_next.clicked.connect(self.top_next_func)
         self.top_prev.clicked.connect(self.top_prev_func)
 
@@ -77,6 +89,13 @@ class OldMoney(QWidget):
 
         self.shoes.clicked.connect(self.shoes_check)
         self.shoes.clicked.connect(self.item_change)
+
+        self.favourites.clicked.connect(self.add_fav_outfit)
+
+    def add_fav_outfit(self):
+        outfits = models.FavouriteOutfits_db()
+        outfits.add_outfit(self.top_icon, self.watch_icon, self.bag_icon, self.bot_icon, self.shoes_icon,
+                           'old_money')
 
     def top_check(self):
         self.item_category = 0

@@ -16,6 +16,13 @@ class ItemBuyY2k(QWidget):
         self.item_back.clicked.connect(self.back)
         self.refresh.clicked.connect(self.refresh_page)
 
+        self.add_fav_item.clicked.connect(self.add_fav)
+
+    def add_fav(self):
+        item = self.parent().y2k.get_item()
+        category = self.y2k_db.get_category(item)
+        self.y2k_db.add_favourites(item, category)
+
     def refresh_page(self):
         url = self.parent().y2k.get_item()
         url = self.y2k_db.get_item_url(url)
@@ -23,5 +30,5 @@ class ItemBuyY2k(QWidget):
 
     def back(self):
         self.parent().y2k.show()
-        self.parent().setGeometry(100, 100, 784, 813)
+        self.parent().setGeometry(100, 100, 853, 813)
         self.hide()

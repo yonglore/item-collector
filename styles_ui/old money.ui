@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>784</width>
+    <width>874</width>
     <height>813</height>
    </rect>
   </property>
@@ -18,8 +18,8 @@
     <rect>
      <x>20</x>
      <y>0</y>
-     <width>739</width>
-     <height>812</height>
+     <width>854</width>
+     <height>816</height>
     </rect>
    </property>
    <property name="font">
@@ -38,8 +38,19 @@
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&gt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -73,8 +84,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&gt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -85,8 +107,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -97,8 +130,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -109,8 +153,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -121,8 +176,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -162,8 +228,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&lt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -174,8 +251,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&gt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -209,8 +297,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&gt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -221,8 +320,19 @@ border: none;</string>
         <pointsize>64</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">padding: 25;
+outline: none;
+border: none;</string>
+      </property>
       <property name="text">
-       <string>&gt;</string>
+       <string/>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>300</width>
+        <height>300</height>
+       </size>
       </property>
      </widget>
     </item>
@@ -282,11 +392,21 @@ border: none;</string>
      <widget class="QPushButton" name="favourites">
       <property name="font">
        <font>
+        <family>Rockwell</family>
         <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">padding: none;</string>
+       <string notr="true">QPushButton{
+padding: none;
+border: transparent solid;
+background-color: rgba(255, 255, 0,100);
+border-radius: 10%;
+
+}
+QPushButton:hover{
+background-color: rgba(90,90,90,100);
+}</string>
       </property>
       <property name="text">
        <string>Добавить в 
@@ -298,12 +418,21 @@ border: none;</string>
      <widget class="QPushButton" name="back">
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
+        <family>Rockwell</family>
+        <pointsize>14</pointsize>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">padding: none;
-</string>
+       <string notr="true">QPushButton{
+padding: none;
+border: transparent solid;
+background-color: rgba(255, 0, 0,100);
+border-radius: 10%;
+
+}
+QPushButton:hover{
+background-color: rgba(90,90,90,100);
+}</string>
       </property>
       <property name="text">
        <string>Назад</string>

@@ -56,14 +56,24 @@ border: none;</string>
      <pointsize>64</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">outline: none;
+border: none;</string>
+   </property>
    <property name="text">
-    <string>&lt;</string>
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>150</width>
+     <height>150</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="back">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>10</x>
      <y>390</y>
      <width>171</width>
      <height>107</height>
@@ -71,12 +81,21 @@ border: none;</string>
    </property>
    <property name="font">
     <font>
+     <family>Rockwell</family>
      <pointsize>24</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">padding: none;
-</string>
+    <string notr="true">QPushButton{
+padding: none;
+border: transparent solid;
+background-color: rgba(255, 0, 0,100);
+border-radius: 10%;
+
+}
+QPushButton:hover{
+background-color: rgba(90,90,90,100);
+}</string>
    </property>
    <property name="text">
     <string>Назад</string>
@@ -96,8 +115,18 @@ border: none;</string>
      <pointsize>64</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">outline: none;
+border: none;</string>
+   </property>
    <property name="text">
-    <string>&gt;</string>
+    <string/>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>150</width>
+     <height>150</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="delete_2">
@@ -111,11 +140,20 @@ border: none;</string>
    </property>
    <property name="font">
     <font>
+     <family>Rockwell</family>
      <pointsize>24</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QPushButton{
+border: transparent solid;
+background-color: rgba(244, 164, 96, 100);
+border-radius: 10%;
+
+}
+QPushButton:hover{
+background-color: rgba(90,90,90,100);
+}</string>
    </property>
    <property name="text">
     <string>Удалить из 
@@ -131,19 +169,28 @@ border: none;</string>
   <widget class="QPushButton" name="refresh_btn">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>390</y>
-     <width>171</width>
-     <height>107</height>
+     <x>280</x>
+     <y>386</y>
+     <width>191</width>
+     <height>111</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Rockwell</family>
      <pointsize>24</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true"/>
+    <string notr="true">QPushButton{
+border: transparent solid;
+background-color: rgba(0, 191, 255,100);
+border-radius: 10%;
+
+}
+QPushButton:hover{
+background-color: rgba(90,90,90,100);
+}</string>
    </property>
    <property name="text">
     <string>Обновить</string>

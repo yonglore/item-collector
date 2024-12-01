@@ -5,7 +5,7 @@ from PyQt6.QtCore import QUrl
 import models
 
 
-class FavAlt(QWidget):
+class FavDI(QWidget):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         uic.loadUi('favourites/itembuy_fav.ui', self)
@@ -13,13 +13,13 @@ class FavAlt(QWidget):
         self.InitUI()
 
     def InitUI(self):
-        self.alt_db = models.Alt_db()
+        self.di_db = models.DeadInside_db()
         self.item_back.clicked.connect(self.back)
         self.refresh.clicked.connect(self.refresh_page)
 
     def refresh_page(self):
-        url = self.parent().fav_item.get_item_alt()
-        url = self.alt_db.get_item_url(url)
+        url = self.parent().fav_item.get_item_di()
+        url = self.di_db.get_item_url(url)
         self.browser.setUrl(QUrl(url))
 
     def back(self):

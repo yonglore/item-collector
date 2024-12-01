@@ -45,6 +45,18 @@ class Y2k(QWidget):
         self.bot.setIcon(QIcon('pictures/y2k/bot/pocket cargo.png'))
         self.shoes.setIcon(QIcon('pictures/y2k/shoes/new balance 1906R.png'))
 
+        self.hat_next.setIcon(QIcon('styles/right arrow.png'))
+        self.top_next.setIcon(QIcon('styles/right arrow.png'))
+        self.bot_next.setIcon(QIcon('styles/right arrow.png'))
+        self.belt_next.setIcon(QIcon('styles/right arrow.png'))
+        self.shoes_next.setIcon(QIcon('styles/right arrow.png'))
+
+        self.hat_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.top_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.bot_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.belt_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.shoes_prev.setIcon(QIcon('styles/left arrow.png'))
+
         self.hat_next.clicked.connect(self.hat_next_func)
         self.hat_prev.clicked.connect(self.hat_prev_func)
 
@@ -77,6 +89,13 @@ class Y2k(QWidget):
 
         self.shoes.clicked.connect(self.shoes_check)
         self.shoes.clicked.connect(self.item_change)
+
+        self.favourites.clicked.connect(self.add_fav_outfit)
+
+    def add_fav_outfit(self):
+        outfits = models.FavouriteOutfits_db()
+        outfits.add_outfit(self.hat_icon, self.top_icon, self.belt_icon, self.bot_icon, self.shoes_icon,
+                           'y2k')
 
     def hat_check(self):
         self.item_category = 0

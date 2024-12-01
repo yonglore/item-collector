@@ -45,6 +45,19 @@ class DeadInside(QWidget):
         self.socks.setIcon(QIcon('pictures/dead_inside/socks/zxc socks.png'))
         self.shoes.setIcon(QIcon('pictures/dead_inside/shoes/new rock.png'))
 
+        self.accessories_next.setIcon(QIcon('styles/right arrow.png'))
+        self.top_next.setIcon(QIcon('styles/right arrow.png'))
+        self.bot_next.setIcon(QIcon('styles/right arrow.png'))
+        self.socks_next.setIcon(QIcon('styles/right arrow.png'))
+        self.shoes_next.setIcon(QIcon('styles/right arrow.png'))
+
+        self.accessories_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.top_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.bot_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.socks_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.shoes_prev.setIcon(QIcon('styles/left arrow.png'))
+
+
         self.accessories_next.clicked.connect(self.accs_next_func)
         self.accessories_prev.clicked.connect(self.accs_prev_func)
 
@@ -77,6 +90,12 @@ class DeadInside(QWidget):
 
         self.shoes.clicked.connect(self.shoes_check)
         self.shoes.clicked.connect(self.item_change)
+
+        self.favourites.clicked.connect(self.add_fav_outfit)
+
+    def add_fav_outfit(self):
+        outfits = models.FavouriteOutfits_db()
+        outfits.add_outfit(self.accs_icon, self.top_icon, self.bot_icon, self.socks_icon, self.shoes_icon, 'dead_inside')
 
     def accessories_check(self):
         self.item_category = 0

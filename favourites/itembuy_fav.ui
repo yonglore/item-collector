@@ -13,36 +13,14 @@
   <property name="windowTitle">
    <string>item buy</string>
   </property>
-  <widget class="QPushButton" name="add_fav_item">
+  <widget class="QWebEngineView" name="browser" native="true">
    <property name="geometry">
     <rect>
-     <x>870</x>
-     <y>610</y>
-     <width>181</width>
-     <height>121</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1051</width>
+     <height>611</height>
     </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Rockwell</family>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton{
-padding: none;
-border: transparent solid;
-background-color: rgba(255, 255, 0,100);
-border-radius: 10%;
-
-}
-QPushButton:hover{
-background-color: rgba(90,90,90,100);
-}</string>
-   </property>
-   <property name="text">
-    <string>Добавить в 
-избранное</string>
    </property>
   </widget>
   <widget class="QPushButton" name="item_back">
@@ -79,7 +57,7 @@ background-color: rgba(90,90,90,100);
   <widget class="QPushButton" name="refresh">
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>850</x>
      <y>610</y>
      <width>201</width>
      <height>121</height>
@@ -106,16 +84,6 @@ background-color: rgba(90,90,90,100);
    <property name="text">
     <string>Обновить
  страницу</string>
-   </property>
-  </widget>
-  <widget class="QWebEngineView" name="browser" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1051</width>
-     <height>611</height>
-    </rect>
    </property>
   </widget>
  </widget>

@@ -45,6 +45,18 @@ class Alt(QWidget):
         self.alt_socks.setIcon(QIcon('pictures/alt/socks/hello kitty socks.png'))
         self.alt_shoes.setIcon(QIcon('pictures/alt/shoes/highest boots.png'))
 
+        self.alt_pendant_next.setIcon(QIcon('styles/right arrow.png'))
+        self.alt_top_next.setIcon(QIcon('styles/right arrow.png'))
+        self.alt_bot_next.setIcon(QIcon('styles/right arrow.png'))
+        self.alt_socks_next.setIcon(QIcon('styles/right arrow.png'))
+        self.alt_shoes_next.setIcon(QIcon('styles/right arrow.png'))
+
+        self.alt_pendant_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.alt_top_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.alt_bot_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.alt_socks_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.alt_shoes_prev.setIcon(QIcon('styles/left arrow.png'))
+
         self.alt_pendant_next.clicked.connect(self.pend_next_func)
         self.alt_pendant_prev.clicked.connect(self.pend_prev_func)
 
@@ -77,6 +89,12 @@ class Alt(QWidget):
 
         self.alt_shoes.clicked.connect(self.shoes_check)
         self.alt_shoes.clicked.connect(self.item_change)
+
+        self.alt_favourites.clicked.connect(self.add_fav_outfit)
+
+    def add_fav_outfit(self):
+        outfits = models.FavouriteOutfits_db()
+        outfits.add_outfit(self.pend_icon, self.top_icon, self.bot_icon, self.socks_icon, self.shoes_icon, 'alt')
 
     def pend_check(self):
         self.item_category = 0

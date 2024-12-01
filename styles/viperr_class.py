@@ -45,6 +45,18 @@ class Viperr(QWidget):
         self.bot.setIcon(QIcon('pictures/viperr/bot/ripped jeans.png'))
         self.shoes.setIcon(QIcon('pictures/viperr/shoes/balenciaga defender.png'))
 
+        self.glasses_next.setIcon(QIcon('styles/right arrow.png'))
+        self.top_next.setIcon(QIcon('styles/right arrow.png'))
+        self.bot_next.setIcon(QIcon('styles/right arrow.png'))
+        self.belt_next.setIcon(QIcon('styles/right arrow.png'))
+        self.shoes_next.setIcon(QIcon('styles/right arrow.png'))
+
+        self.glasses_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.top_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.bot_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.belt_prev.setIcon(QIcon('styles/left arrow.png'))
+        self.shoes_prev.setIcon(QIcon('styles/left arrow.png'))
+
         self.glasses_next.clicked.connect(self.glasses_next_func)
         self.glasses_prev.clicked.connect(self.glasses_prev_func)
 
@@ -77,6 +89,13 @@ class Viperr(QWidget):
 
         self.shoes.clicked.connect(self.shoes_check)
         self.shoes.clicked.connect(self.item_change)
+
+        self.favourites.clicked.connect(self.add_fav_outfit)
+
+    def add_fav_outfit(self):
+        outfits = models.FavouriteOutfits_db()
+        outfits.add_outfit(self.glasses_icon, self.top_icon, self.belt_icon, self.bot_icon, self.shoes_icon,
+                           'viperr')
 
     def glasses_check(self):
         self.item_category = 0

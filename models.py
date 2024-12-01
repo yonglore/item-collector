@@ -8,9 +8,125 @@ class Database:
         self.cur = self.con.cursor()
 
 
+class FavouriteOutfits_db(Database):
+    def __init__(self):
+        super().__init__()
+
+    def get_item1(self):
+        pendants = self.cur.execute("""
+        SELECT item_1 FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in pendants:
+            res.append(*elem)
+        return res
+
+    def get_item2(self):
+        pendants = self.cur.execute("""
+        SELECT item_2 FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in pendants:
+            res.append(*elem)
+        return res
+
+    def get_item3(self):
+        pendants = self.cur.execute("""
+        SELECT item_3 FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in pendants:
+            res.append(*elem)
+        return res
+
+    def get_item4(self):
+        pendants = self.cur.execute("""
+        SELECT item_4 FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in pendants:
+            res.append(*elem)
+        return res
+
+    def get_item5(self):
+        pendants = self.cur.execute("""
+        SELECT item_5 FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in pendants:
+            res.append(*elem)
+        return res
+
+    def index_to_outfit(self, index):
+        items = self.cur.execute(f"""
+                SELECT * FROM Favourites_outfits
+                WHERE id = '{index}'
+                """).fetchall()
+
+        res = []
+        for elem in items:
+            for i in elem:
+                res.append(i)
+        return res
+
+    def get_index(self):
+        items = self.cur.execute("""
+                SELECT id FROM Favourites_outfits
+                """).fetchall()
+
+        res = []
+        for elem in items:
+            for i in elem:
+                res.append(i)
+        return res
+
+    def add_outfit(self, item1, item2, item3, item4, item5, style):
+        if (item1 not in self.get_item1() or item2 not in self.get_item2() or item3 not in self.get_item3()
+                or item4 not in self.get_item4() or item5 not in self.get_item5()):
+            self.cur.execute("""
+                INSERT INTO Favourites_outfits(item_1, item_2, item_3, item_4, item_5, style)
+                VALUES (?,?,?,?,?,?);
+                """, (item1, item2, item3, item4, item5, style))
+            self.con.commit()
+
+    def delete_outfit(self, index):
+        self.cur.execute(f"""
+            DELETE
+            FROM Favourites_outfits
+            WHERE id = '{index}';
+            """)
+        self.con.commit()
+
+    def get_items(self):
+        items = self.cur.execute("""
+        SELECT * FROM Favourites_outfits
+        """).fetchall()
+
+        res = []
+        for elem in items:
+            for i in elem:
+                res.append(i)
+        return res
+
+
 class Alt_db(Database):
     def __init__(self):
         super().__init__()
+
+    def get_names(self):
+        names = self.cur.execute("""
+        SELECT Name FROM Alt
+        """).fetchall()
+
+        res = []
+        for elem in names:
+            res.append(*elem)
+        return res
 
     def get_favourites(self):
         favs = self.cur.execute("""
@@ -23,7 +139,14 @@ class Alt_db(Database):
             res.append(*elem)
         return res
 
-    def add_favourites(self, item):
+    def get_category(self, item):
+        category = self.cur.execute(f"""
+        SELECT Type FROM Alt
+        WHERE Name = '{item}'
+        """).fetchone()
+        return category[0]
+
+    def add_favourites(self, item, category):
         self.cur.execute(f"""
         UPDATE Alt
         SET favourite = 1
@@ -31,7 +154,8 @@ class Alt_db(Database):
         """)
         self.con.commit()
 
-        # image = Image.open()
+        image = Image.open(f'pictures/alt/{category}/{item}.png')
+        image.save(f'favourites/pics/{item}.png')
 
     def remove_favourites(self, item):
         self.cur.execute(f"""
@@ -116,6 +240,16 @@ class DeadInside_db(Database):
     def __init__(self):
         super().__init__()
 
+    def get_names(self):
+        names = self.cur.execute("""
+        SELECT Name FROM Dead_inside
+        """).fetchall()
+
+        res = []
+        for elem in names:
+            res.append(*elem)
+        return res
+
     def get_favourites(self):
         favs = self.cur.execute("""
         SELECT Name FROM Dead_inside
@@ -126,6 +260,32 @@ class DeadInside_db(Database):
         for elem in favs:
             res.append(*elem)
         return res
+
+    def get_category(self, item):
+        category = self.cur.execute(f"""
+        SELECT Type FROM Dead_inside
+        WHERE Name = '{item}'
+        """).fetchone()
+        return category[0]
+
+    def add_favourites(self, item, category):
+        self.cur.execute(f"""
+        UPDATE Dead_inside
+        SET favourite = 1
+        WHERE Name ='{item}'
+        """)
+        self.con.commit()
+
+        image = Image.open(f'pictures/dead_inside/{category}/{item}.png')
+        image.save(f'favourites/pics/{item}.png')
+
+    def remove_favourites(self, item):
+        self.cur.execute(f"""
+        UPDATE Dead_inside
+        SET favourite = 0
+        WHERE Name = '{item}'
+        """)
+        self.con.commit()
 
     def get_item_url(self, item):
         con = sqlite3.connect('outfit.sqlite')
@@ -201,6 +361,53 @@ class DeadInside_db(Database):
 class OldMoney_db(Database):
     def __init__(self):
         super().__init__()
+
+    def get_names(self):
+        names = self.cur.execute("""
+        SELECT Name FROM Old_money
+        """).fetchall()
+
+        res = []
+        for elem in names:
+            res.append(*elem)
+        return res
+
+    def get_favourites(self):
+        favs = self.cur.execute("""
+        SELECT Name FROM Old_money
+        WHERE favourite = 1
+        """).fetchall()
+
+        res = []
+        for elem in favs:
+            res.append(*elem)
+        return res
+
+    def get_category(self, item):
+        category = self.cur.execute(f"""
+        SELECT Type FROM Old_money
+        WHERE Name = '{item}'
+        """).fetchone()
+        return category[0]
+
+    def add_favourites(self, item, category):
+        self.cur.execute(f"""
+        UPDATE Old_money
+        SET favourite = 1
+        WHERE Name ='{item}'
+        """)
+        self.con.commit()
+
+        image = Image.open(f'pictures/old_money/{category}/{item}.png')
+        image.save(f'favourites/pics/{item}.png')
+
+    def remove_favourites(self, item):
+        self.cur.execute(f"""
+        UPDATE Old_money
+        SET favourite = 0
+        WHERE Name = '{item}'
+        """)
+        self.con.commit()
 
     def get_favourites(self):
         favs = self.cur.execute("""
@@ -288,6 +495,53 @@ class Viperr_db(Database):
     def __init__(self):
         super().__init__()
 
+    def get_names(self):
+        names = self.cur.execute("""
+        SELECT Name FROM Viperr
+        """).fetchall()
+
+        res = []
+        for elem in names:
+            res.append(*elem)
+        return res
+
+    def get_favourites(self):
+        favs = self.cur.execute("""
+        SELECT Name FROM Viperr
+        WHERE favourite = 1
+        """).fetchall()
+
+        res = []
+        for elem in favs:
+            res.append(*elem)
+        return res
+
+    def get_category(self, item):
+        category = self.cur.execute(f"""
+        SELECT Type FROM Viperr
+        WHERE Name = '{item}'
+        """).fetchone()
+        return category[0]
+
+    def add_favourites(self, item, category):
+        self.cur.execute(f"""
+        UPDATE Viperr
+        SET favourite = 1
+        WHERE Name ='{item}'
+        """)
+        self.con.commit()
+
+        image = Image.open(f'pictures/viperr/{category}/{item}.png')
+        image.save(f'favourites/pics/{item}.png')
+
+    def remove_favourites(self, item):
+        self.cur.execute(f"""
+        UPDATE Viperr
+        SET favourite = 0
+        WHERE Name = '{item}'
+        """)
+        self.con.commit()
+
     def get_favourites(self):
         favs = self.cur.execute("""
         SELECT Name FROM Viperr
@@ -372,6 +626,53 @@ class Viperr_db(Database):
 class Y2k_db(Database):
     def __init__(self):
         super().__init__()
+
+    def get_names(self):
+        names = self.cur.execute("""
+        SELECT Name FROM Y2k
+        """).fetchall()
+
+        res = []
+        for elem in names:
+            res.append(*elem)
+        return res
+
+    def get_favourites(self):
+        favs = self.cur.execute("""
+        SELECT Name FROM Y2k
+        WHERE favourite = 1
+        """).fetchall()
+
+        res = []
+        for elem in favs:
+            res.append(*elem)
+        return res
+
+    def get_category(self, item):
+        category = self.cur.execute(f"""
+        SELECT Type FROM Y2k
+        WHERE Name = '{item}'
+        """).fetchone()
+        return category[0]
+
+    def add_favourites(self, item, category):
+        self.cur.execute(f"""
+        UPDATE Y2k
+        SET favourite = 1
+        WHERE Name ='{item}'
+        """)
+        self.con.commit()
+
+        image = Image.open(f'pictures/y2k/{category}/{item}.png')
+        image.save(f'favourites/pics/{item}.png')
+
+    def remove_favourites(self, item):
+        self.cur.execute(f"""
+        UPDATE Y2k
+        SET favourite = 0
+        WHERE Name = '{item}'
+        """)
+        self.con.commit()
 
     def get_favourites(self):
         favs = self.cur.execute("""
